@@ -2,6 +2,10 @@
 
 @section('title', 'Dashboard')
 
+@section('css')
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@stop
+
 @section('content_header')
     <h1>Dashboard</h1>
 @stop
