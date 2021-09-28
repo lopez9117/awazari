@@ -11,7 +11,19 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <div class="container contentDashboard">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                <p>Hola que tal</p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                <p>Hola que tal</p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                <p>Hola que tal</p>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('css')
