@@ -13,15 +13,7 @@
 @section('content')
     <div class="container contentDashboard">
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-                <p>Hola que tal</p>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-                <p>Hola que tal</p>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-                <p>Hola que tal</p>
-            </div>
+           <p>Para despues</p>
         </div>
     </div>
 @stop
