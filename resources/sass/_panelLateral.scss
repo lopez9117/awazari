@@ -2,6 +2,19 @@
     border-radius: 0px !important;
 }
 
-[class*=sidebar-dark-] .sidebar a{
+.nav.nav-treeview > .nav-item > .nav-link.active {
     color:#76a00d;
+    background: transparent;
+    &:hover{
+        background-color: rgba(255,255,255,.1);
+    }
+}
+.nav-item.has-treeview.menu-open > .nav-link.active, 
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
+    background: transparent;
+    color:#76a00d;
+    box-shadow: none;
+}
+.nav.nav-treeview{
+    box-shadow: 0 8px 10px -6px;
 }

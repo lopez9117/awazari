@@ -269,6 +269,10 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
+                    'text' => 'Usuarios',
+                    'url'  => '/usuarios',
+                ],
+                [
                     'text' => 'Permisos',
                     'url'  => '#',
                 ],
@@ -276,10 +280,6 @@ return [
                     'text'    => 'Roles',
                     'url'     => '#',
                     
-                ],
-                [
-                    'text' => 'Usuarios',
-                    'url'  => '#',
                 ],
             ],
         ],
