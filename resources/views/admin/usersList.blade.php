@@ -7,12 +7,21 @@
 @stop
 
 @section('content_header')
-    <h1>Lista de usuarios</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1>Lista de usuarios</h1>
+            </div>
+            <div class="col-6 text-right">
+                <a href="{{Route('register-new-users')}}" class="btn btn-primary">Crear Usuario</a>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('content')
     <div class="container contentDashboard">
-        <div class="row">
+        <div class="row mt-4">
            <div class="col-12">
                <table style="width:100%">
                    <thead>

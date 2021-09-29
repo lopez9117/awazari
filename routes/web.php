@@ -26,3 +26,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/usuarios', [App\Http\Controllers\UserController::class, 'index'])->name('admin.users');
+
+Route::get('crear/usuarios', [App\Http\Controllers\UserController::class, 'vewCreateUSers'])->name('register-new-users');
+
+Route::post('nuevo/usuario', [App\Http\Controllers\UserController::class, 'create'])->name('new-user');

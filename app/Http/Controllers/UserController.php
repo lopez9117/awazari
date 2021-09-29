@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -18,14 +19,25 @@ class UserController extends Controller
         return view('admin.usersList', compact('usuarios'));
     }
 
+    public function vewCreateUSers(){
+        return view('admin.registerUsersNew');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $usuario = new User();
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->password = Hash::make($request->password);
+
+        $usuario->save();
+
+        return redirect('/usuarios');
     }
 
     /**
