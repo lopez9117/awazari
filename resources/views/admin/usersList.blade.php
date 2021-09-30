@@ -23,30 +23,34 @@
     <div class="container contentDashboard">
         <div class="row mt-4">
            <div class="col-12">
-               <table style="width:100%">
-                   <thead>
-                       <tr>
-                           <th>Nombre</th>
-                           <th>Correo</th>
-                           <th>Rol</th>
-                       </tr>
-                   </thead>
-                   <tbody>
-                       @foreach ($usuarios as $usuario)
-                           <tr>
-                               <td>{{ $usuario->name }}</td>
-                               <td>{{ $usuario->email }}</td>
-                               <td>
-                                    @if(!empty($usuario->getRoleNames()))
-                                        @foreach ($usuario->getRoleNames() as $userRole)
-                                            {{$userRole}}
-                                        @endforeach
-                                    @endif
-                               </td>
-                           </tr>
-                       @endforeach
-                   </tbody>
-               </table>
+               <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th width="200px">Nombre</th>
+                                    <th width="250px">Correo</th>
+                                    <th>Rol</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($usuarios as $usuario)
+                                    <tr>
+                                        <td width="200px">{{ $usuario->name }}</td>
+                                        <td width="250px">{{ $usuario->email }}</td>
+                                        <td>
+                                             @if(!empty($usuario->getRoleNames()))
+                                                 @foreach ($usuario->getRoleNames() as $userRole)
+                                                     {{$userRole}}
+                                                 @endforeach
+                                             @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+               </div>
            </div>
         </div>
     </div>

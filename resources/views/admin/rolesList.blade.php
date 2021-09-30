@@ -23,22 +23,26 @@
     <div class="container contentDashboard">
         <div class="row">
            <div class="col-12">
-                <table style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Rol</th>
-                            <th>Permisos</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($roles as $rol)
-                            <tr>
-                                <td>{{ $rol->name }}</td>
-                                <td>{{ $rol->guard_name }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th width="100px">Rol</th>
+                                    <th>Permisos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($roles as $rol)
+                                    <tr>
+                                        <td width="100px">{{ $rol->name }}</td>
+                                        <td>{{ $rol->guard_name }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
            </div>
         </div>
     </div>

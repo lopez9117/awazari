@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,7 +21,8 @@ class UserController extends Controller
     }
 
     public function vewCreateUSers(){
-        return view('admin.registerUsersNew');
+        $roles = Role::all();
+        return view('admin.registerUsersNew', compact('roles'));
     }
 
     /**
@@ -36,6 +38,8 @@ class UserController extends Controller
         $usuario->password = Hash::make($request->password);
 
         $usuario->save();
+
+        $usuario->roles()->sync($request->roles);
 
         return redirect('/usuarios');
     }
