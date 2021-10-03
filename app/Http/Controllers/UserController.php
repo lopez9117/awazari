@@ -17,12 +17,12 @@ class UserController extends Controller
     public function index()
     {
         $usuarios = User::all();
-        return view('admin.usersList', compact('usuarios'));
+        return view('admin.usuarios.index', compact('usuarios'));
     }
 
     public function vewCreateUSers(){
         $roles = Role::all();
-        return view('admin.registerUsersNew', compact('roles'));
+        return view('admin.usuarios.create', compact('roles'));
     }
 
     /**

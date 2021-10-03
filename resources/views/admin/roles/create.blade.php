@@ -31,6 +31,14 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                @foreach ($permisos as $permiso)
+                                    <div class="col-12 col-md-6 col-lg-6">
+                                        <input type="checkbox" name="permissions[]" value="{{ $permiso->id }}">
+                                        <span>{{ $permiso->name }}</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-12">
                                     <input type="submit" value="Crear" class="btn btn-success">
                                 </div>

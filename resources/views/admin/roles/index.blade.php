@@ -36,7 +36,15 @@
                                 @foreach ($roles as $rol)
                                     <tr>
                                         <td width="100px">{{ $rol->name }}</td>
-                                        <td>{{ $rol->guard_name }}</td>
+                                        <td>
+                                            @can('admin.roles.edit')
+                                                <form method="GET" action="{{route('edithRole')}}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{$rol->id}}">
+                                                    <input type="submit" value="Editar">
+                                                </form>
+                                            @endcan
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

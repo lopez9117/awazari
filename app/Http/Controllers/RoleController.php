@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -15,11 +16,13 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('admin.rolesList', compact('roles'));
+        $permisos = Permission::all();
+        return view('admin.roles.index', compact('roles', 'permisos'));
     }
 
     public function viewCreateRole(){
-        return view('admin.createRole');
+        $permisos = Permission::all();
+        return view('admin.roles.create', compact('permisos'));
     }
 
     /**
@@ -29,12 +32,14 @@ class RoleController extends Controller
      */
     public function create(Request $request)
     {
-        $roles = new Role();
-        $roles->name = $request->name;
-        $roles->guard_name = $request->guard_name;
-        $roles->save();
+        $role = new Role();
+        $role->name = $request->name;
+        $role->guard_name = $request->guard_name;
+        $role->save();
 
-        return redirect('/roles');
+        $role->permissions()->sync($request->permissions);
+
+        return redirect()->route('admin.roles.edit', $role);
     }
 
     /**
@@ -45,7 +50,9 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rol = Role::find($request->id);
+        $permissions = $rol->getAllPermissions();
+        return view('admin.roles.edit', compact('rol', 'permissions'));
     }
 
     /**
