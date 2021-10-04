@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use DB;
+use Hash;
+use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
@@ -61,9 +64,9 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -72,9 +75,13 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Request $request)
     {
-        //
+        $user = User::find($request);
+        $role = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
+    
+        return view('admin.usuarios.edit',compact('user','roles','userRole'));
     }
 
     /**

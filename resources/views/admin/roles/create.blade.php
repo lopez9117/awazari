@@ -22,28 +22,30 @@
            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                <div class="card">
                    <div class="card-body">
-                        <form method="POST" action="{{ route('create-role-new') }}">
-                            @csrf
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <input type="text" name="name" class="form-control nameRoleInput">
-                                    <input type="hidden" name="guard_name" value="Web">
-                                </div>
+                        {!! Form::open(['route' => 'create-role-new']) !!}
+                            <div class="form-group">
+                                {!! Form::text('name', null, ['placeholder' => 'Nombre del rol', 'class' => 'form-control']) !!}
+                                @error('name')
+                                    <small class="text-danger">
+                                        {{$message}}
+                                    </small>
+                                @enderror
                             </div>
+                            <h4 class="text-center">Asignar permisos</h4>
                             <div class="form-group row">
-                                @foreach ($permisos as $permiso)
-                                    <div class="col-12 col-md-6 col-lg-6">
-                                        <input type="checkbox" name="permissions[]" value="{{ $permiso->id }}">
-                                        <span>{{ $permiso->name }}</span>
+                                @foreach ($permissions as $permission)
+                                    <div class="col-12 col-md-6">
+                                        <label>
+                                            {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1'] ) !!}
+                                            {{$permission->name}}
+                                        </label>
                                     </div>
                                 @endforeach
                             </div>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <input type="submit" value="Crear" class="btn btn-success">
-                                </div>
+                            <div class="form-group text-center">
+                                <input type="submit" value="Crear rol" class="btn btn-sm btn-primary">
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                    </div>
                </div>
            </div>

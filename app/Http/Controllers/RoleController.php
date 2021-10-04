@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use DB;
 
 class RoleController extends Controller
 {
@@ -21,8 +22,8 @@ class RoleController extends Controller
     }
 
     public function viewCreateRole(){
-        $permisos = Permission::all();
-        return view('admin.roles.create', compact('permisos'));
+        $permissions = Permission::all();
+        return view('admin.roles.create', compact('permissions'));
     }
 
     /**
@@ -32,14 +33,7 @@ class RoleController extends Controller
      */
     public function create(Request $request)
     {
-        $role = new Role();
-        $role->name = $request->name;
-        $role->guard_name = $request->guard_name;
-        $role->save();
-
-        $role->permissions()->sync($request->permissions);
-
-        return redirect()->route('admin.roles.edit', $role);
+        
     }
 
     /**
@@ -50,9 +44,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $rol = Role::find($request->id);
-        $permissions = $rol->getAllPermissions();
-        return view('admin.roles.edit', compact('rol', 'permissions'));
+        $request->validate(['name' => 'required']);
+
+        $role = Role::create($request->all());
+
+        $role->permissions()->sync($request->permissions);
+
+        return redirect('/roles');
     }
 
     /**
@@ -72,9 +70,15 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit(Request $request)
     {
-        //
+        $role = Role::find($request->id);
+        $permission = Permission::get();
+        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$request->id)
+            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+            ->all();
+    
+        return view('admin.roles.edit',compact('role','permission','rolePermissions'));
     }
 
     /**
@@ -84,9 +88,20 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+    
+        $role = Role::find($request->id);
+        $role->name = $request->input('name');
+        $role->save();
+    
+        $role->syncPermissions($request->input('permission'));
+    
+        return redirect('/roles')->with('success','Role updated successfully');
+
     }
 
     /**
@@ -95,8 +110,10 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy(Request $request)
     {
-        //
+        DB::table("roles")->where('id',$request->id)->delete();
+        return redirect('/roles')
+                        ->with('success','Role deleted successfully');
     }
 }

@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Awaza</b>ri',
+    'logo' => '<b>Awazari</b>',
     'logo_img' => 'vendor/adminlte/dist/img/logo-awazari-Mesa-de-trabajo-1.png', 
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -271,10 +271,6 @@ return [
                 [
                     'text' => 'Usuarios',
                     'url'  => '/usuarios',
-                ],
-                [
-                    'text' => 'Permisos',
-                    'url'  => '#',
                 ],
                 [
                     'text'    => 'Roles',

@@ -25,23 +25,34 @@
            <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-striped" style="width:100%">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th width="100px">Rol</th>
-                                    <th>Permisos</th>
+                                    <th>ID</th>
+                                    <th>Rol</th>
+                                    <th colspan="2"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($roles as $rol)
                                     <tr>
-                                        <td width="100px">{{ $rol->name }}</td>
-                                        <td>
+                                        <td>{{ $rol->id }}</td>
+                                        <td>{{ $rol->name }}</td>
+                                        <td width="10px">
                                             @can('admin.roles.edit')
-                                                <form method="GET" action="{{route('edithRole')}}">
+                                                <form method="GET" action="{{route('admin.roles.edit')}}">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{$rol->id}}">
-                                                    <input type="submit" value="Editar">
+                                                    <input type="submit" value="Editar" class="btn btn-sm btn-primary">
+                                                </form>
+                                            @endcan
+                                        </td>
+                                        <td width="10px">
+                                            @can('admin.roles.destroy')
+                                                <form action="{{route('role.destroy')}}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{$rol->id}}">
+                                                    <input type="submit" value="Eliminar" class="btn btn-sm btn-danger">
                                                 </form>
                                             @endcan
                                         </td>
