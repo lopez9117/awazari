@@ -35,10 +35,9 @@ Route::post('nuevo/usuario', [App\Http\Controllers\UserController::class, 'creat
 
 Route::get('usuario/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('admin.usuarios.edit');
 
-Route::put('update/usuarios', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+Route::put('update/usuarios', [App\Http\Controllers\UserController::class, 'update'])->name('admin.usuarios.update');
 
-
-Route::get('usuario/destroy', [App\Http\Controllers\UserController::class, 'destroy'])->name('admin.usuarios.destroy');
+Route::post('usuario/destroy', [App\Http\Controllers\UserController::class, 'destroy'])->name('admin.usuarios.destroy');
 
 // roles
 

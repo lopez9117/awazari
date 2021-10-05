@@ -13,7 +13,9 @@
                 <h1>Lista de usuarios</h1>
             </div>
             <div class="col-6 text-right">
-                <a href="{{Route('register-new-users')}}" class="btn btn-primary">Crear Usuario</a>
+                @can('admin.usuarios.create')
+                    <a href="{{Route('register-new-users')}}" class="btn btn-primary">Crear Usuario</a>
+                @endcan
             </div>
         </div>
     </div>
@@ -56,9 +58,10 @@
                                         </td>
                                         <td width="10px">
                                             @can('admin.usuarios.destroy')
-                                                <form action="{{route('admin.usuarios.destroy')}}" method="get">
-                                                    <input type="hidden" value="{{ $usuario->id }}">
-                                                    <input type="submit" value="Editar" class="btn btn-sm btn-danger">
+                                                <form action="{{route('admin.usuarios.destroy')}}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $usuario->id }}">
+                                                    <input type="submit" value="Eliminar" class="btn btn-sm btn-danger">
                                                 </form>
                                             @endcan
                                         </td>

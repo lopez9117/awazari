@@ -13,7 +13,9 @@
                 <h1>Roles</h1>
             </div>
             <div class="col-6 text-right">
-                <a href="{{Route('create-role')}}" class="btn btn-primary">Crear Rol</a>
+                @can('admin.roles.create')
+                    <a href="{{Route('create-role')}}" class="btn btn-primary">Crear Rol</a>
+                @endcan
             </div>
         </div>
     </div>

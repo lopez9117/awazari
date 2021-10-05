@@ -77,11 +77,13 @@ class UserController extends Controller
      */
     public function edit(Request $request)
     {
-        $user = User::find($request);
-        $role = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name', 'name')->all();
+        $user = User::find($request->id);
+        $roles = Role::all();
+        $userRole = DB::table("model_has_roles")->where("model_has_roles.model_id",$request->id)
+        ->pluck('model_has_roles.role_id','model_has_roles.role_id')
+        ->all();
     
-        return view('admin.usuarios.edit',compact('user','roles','userRole'));
+        return view('admin.usuarios.edit',compact('user','roles', 'userRole'));
     }
 
     /**
@@ -91,9 +93,26 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        //
+
+        $user = User::find($request->id);
+        
+        if($request->password !== null){
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+
+        DB::table('model_has_roles')->where('model_id',$request->id)->delete();
+
+        $user->assignRole($request->input('role'));
+    
+        return redirect('/usuarios');
     }
 
     /**
@@ -102,8 +121,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Request $request)
     {
-        //
+        DB::table("users")->where('id',$request->id)->delete();
+        DB::table('model_has_roles')->where('model_id',$request->id)->delete();
+        return redirect()->back()->with('deleteMessage', '¡El Usuario fue Eliminado Con exito!');
     }
 }

@@ -16,7 +16,8 @@
            <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
                <div class="card">
                    <div class="card-body">
-                    {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update']]) !!}
+                    {!! Form::model($user, ['method' => 'PUT','route' => ['admin.usuarios.update']]) !!}
+                    {!! Form::hidden('id', $user->id) !!}
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
@@ -45,7 +46,13 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Role:</strong>
-                                
+                                @foreach ($roles as $value)
+                                    <div class="col-12 col-md-6">
+                                        <label>{{ Form::checkbox('role[]', $value->id, in_array($value->id, $userRole) ? true : false, array('class' => 'name mr-1')) }}
+                                                {{ $value->name }}</label>
+                                    </div>
+                                @endforeach
+
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
