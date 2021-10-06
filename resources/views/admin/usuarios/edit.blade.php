@@ -7,7 +7,16 @@
 @stop
 
 @section('content_header')
-    <h1>Editar Usuario</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <h2 class="h4">Formulario para editar usuario</h2>
+            </div>
+            <div class="col-3 text-right">
+                <a href="/usuarios" class="btn btn-sm btn-dark">Atras</a>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('content')
@@ -21,42 +30,39 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Name:</strong>
                                 {!! Form::text('name', null, array('placeholder' => 'name','class' => 'form-control')) !!}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Email:</strong>
                                 {!! Form::text('email', null, array('placeholder' => 'email','class' => 'form-control')) !!}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Password:</strong>
                                 {!! Form::password('password', array('placeholder' => 'password','class' => 'form-control')) !!}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Confirm Password:</strong>
                                 {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Role:</strong>
+                        <div class="col-12 text-center">
+                            <h4>Selecciona uno o más roles</h4>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group row">
                                 @foreach ($roles as $value)
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-6 col-lg-4">
                                         <label>{{ Form::checkbox('role[]', $value->id, in_array($value->id, $userRole) ? true : false, array('class' => 'name mr-1')) }}
                                                 {{ $value->name }}</label>
                                     </div>
                                 @endforeach
-
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-sm btn-primary">Guardar cambios</button>
                         </div>
                     </div>
                     {!! Form::close() !!}

@@ -14,7 +14,7 @@
             </div>
             <div class="col-6 text-right">
                 @can('admin.roles.create')
-                    <a href="{{Route('create-role')}}" class="btn btn-primary">Crear Rol</a>
+                    <a href="{{Route('create-role')}}" class="btn btn-sm btn-dark">Crear Rol</a>
                 @endcan
             </div>
         </div>

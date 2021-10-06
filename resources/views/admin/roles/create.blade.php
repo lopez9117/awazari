@@ -9,8 +9,11 @@
 @section('content_header')
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h1>Formulario de creación de roles</h1>
+            <div class="col-9">
+                <h2 class="h4">Formulario de creación de roles</h2>
+            </div>
+            <div class="col-3 text-right">
+                <a href="/roles" class="btn btn-sm btn-dark">Atras</a>
             </div>
         </div>
     </div>

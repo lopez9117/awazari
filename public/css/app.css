@@ -10024,3 +10024,13 @@ h3 {
 .nav.nav-treeview {
   box-shadow: 0 8px 10px -6px;
 }
+
+.optionsRoleFormRegisterUSers {
+  width: 100%;
+  padding: 0 18px;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+}

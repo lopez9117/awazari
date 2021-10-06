@@ -13,7 +13,7 @@
 @section('content')
     <div class="container contentDashboard">
         <div class="row">
-           <p>Para despues</p>
+           <p>Segundo Módulo</p>
         </div>
     </div>
 @stop

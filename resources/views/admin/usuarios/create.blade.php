@@ -9,8 +9,11 @@
 @section('content_header')
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                Formulario de registro de nuevo usuario
+            <div class="col-9">
+                <h2 class="h4">Formulario de registro de nuevo usuario</h2>
+            </div>
+            <div class="col-3 text-right">
+                <a href="/usuarios" class="btn btn-sm btn-dark">Atras</a>
             </div>
         </div>
     </div>
@@ -29,9 +32,7 @@
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Nombre">
         
                                     @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
@@ -41,23 +42,8 @@
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Correo">
         
                                     @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <small class="text-danger">{{ $message }}</small>
                                     @enderror
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <p>Selecciona uno o más roles</p>
-                                </div>
-                                <div class="col-12">
-                                    @foreach ($roles as $rol)
-                                        <label for="{{ $rol->name }}">
-                                            <input type="checkbox" name="roles[]" value="{{ $rol->id }}">
-                                            {{ $rol->name }}
-                                        </label>
-                                    @endforeach
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -71,16 +57,29 @@
                                     @enderror
                                 </div>
                             </div>
-        
                             <div class="form-group row">
                                 <div class="col-12">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirma contraseña">
                                 </div>
                             </div>
-        
+                            <div class="form-group row">
+                                <div class="col-12 text-center">
+                                    <h4>Selecciona uno o más roles</h4>
+                                </div>
+                                <div class="form-group row optionsRoleFormRegisterUSers">
+                                    @foreach ($roles as $rol)
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <label>
+                                                <input type="checkbox" name="roles[]" value="{{ $rol->id }}" class="mr-1">
+                                                {{ $rol->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                             <div class="form-group row mb-0">
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-sm btn-primary">
                                         {{ __('Register') }}
                                     </button>
                                 </div>

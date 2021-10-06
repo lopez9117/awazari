@@ -14,7 +14,7 @@
             </div>
             <div class="col-6 text-right">
                 @can('admin.usuarios.create')
-                    <a href="{{Route('register-new-users')}}" class="btn btn-primary">Crear Usuario</a>
+                    <a href="{{Route('register-new-users')}}" class="btn btn-sm btn-dark">Crear Usuario</a>
                 @endcan
             </div>
         </div>

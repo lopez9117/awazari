@@ -266,18 +266,20 @@ return [
 
         [
             'text'    => 'Gestion Usuarios',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-users-cog',
             'submenu' => [
                 [
                     'text' => 'Usuarios',
                     'url'  => '/usuarios',
+                    'can' => 'admin.usuarios.index',
                 ],
                 [
                     'text'    => 'Roles',
                     'url'     => '/roles',
-                    
+                    'can' => 'admin.roles.index',
                 ],
             ],
+            'can' => 'admin.usuarios.index',
         ],
 
 

@@ -7,7 +7,16 @@
 @stop
 
 @section('content_header')
-    <h1>Editar Rol</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <h2 class="h4">Formulario para editar rol</h2>
+            </div>
+            <div class="col-3 text-right">
+                <a href="/roles" class="btn btn-sm btn-dark">Atras</a>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('content')
