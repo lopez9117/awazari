@@ -260,8 +260,17 @@ return [
         ],
          [
             'text' => 'Gestion Productos',
-            'url'  => '#',
             'icon' => 'fas fa-fw fa-lock',
+            'submenu' => [
+                [
+                    'text' => 'Mis ofertas',
+                    'url'  => '/oferta/index',
+                ],
+                [
+                    'text'    => 'Crear oferta',
+                    'url'  => '/oferta/create',
+                ],
+            ],
         ],
 
         [

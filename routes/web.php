@@ -52,3 +52,9 @@ Route::get('store/edit', [App\Http\Controllers\RoleController::class, 'edit'])->
 Route::put('role/upsate', [App\Http\Controllers\RoleController::class, 'update'])->name('roles.update');
 
 Route::post('role/destroy', [App\Http\Controllers\RoleController::class, 'destroy'])->name('role.destroy');
+
+// ofertas
+
+Route::get('/oferta/index', [App\Http\Controllers\OfferController::class, 'index'])->name('index.offer');
+
+Route::get('/oferta/create', [App\Http\Controllers\OfferController::class, 'create'])->name('create.offer');
