@@ -17,19 +17,20 @@
                <div class="card">
                    <div class="card-body">
                         <p class="text-danger">Todos los campos son obligatorios</p>
-                        <form action="" method="post">
+                        <form action="{{route('store.offer')}}" method="post" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="user_id" value="{{auth::user()->id}}">
                             <div class="section-name-image-description">
                                 @include('admin.oferta.formSections.name-file-description')
                                 <div class="form-group text-right">
-                                    <a href="" class="btn btn-sm btn-dark" id="next-form-offer">Siguiente</a>
+                                    <button class="btn btn-sm btn-dark" id="next-form-offer">Siguiente</button>
                                 </div>
                             </div>
                             <div class="section-price-location">
                                 @include('admin.oferta.formSections.price-location')
                                 <div class="form-group text-center mt-4">
-                                    <a href="" class="btn btn-sm btn-dark mr-5" id="back-form-offer">Atras</a>
-                                    <input type="submit" value="Guardar" class="btn btn-sm btn-dark">
+                                    <button class="btn btn-sm btn-dark mr-5" id="back-form-offer">Atras</button>
+                                    <input type="submit" value="Guardar" id="submit-offer" class="btn btn-sm btn-dark">
                                 </div>
                             </div>
                         </form>

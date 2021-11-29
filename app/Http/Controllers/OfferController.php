@@ -7,13 +7,15 @@ use App\Models\File;
 use App\Models\location;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OfferController extends Controller
 {
     
     public function index()
-    {
-        return view('admin.oferta.index');
+    {   
+        $user = User::find(Auth::user()->id);
+        return view('admin.oferta.index', compact('user'));
     }
 
     public function create()
@@ -23,7 +25,34 @@ class OfferController extends Controller
 
     public function store(Request $request)
     {
+
+        $offer = new Offer;
+        $file = new File;
+        $location = new location;
+        // Data Offer
+        $offer->name = $request->name;
+        $offer->description = $request->description;
+        $offer->price = $request->price;
+        $offer->save();
+
+        // Data file
+        if($request->file('file')){
+            $file->file = $request->file('file')->store('file', 'public');
+            $file->save();
+        }
         
+        // Data location
+        $location->department = $request->department;
+        $location->city = $request->city;
+        $location->location = $request->location;
+        $location->save();
+
+        $offer->files()->sync($file);
+        $offer->locations()->sync($location);
+        $offer->users()->sync($request->user_id);
+
+        $user = User::find(Auth::user()->id);
+        return view('admin.oferta.index', compact('user'));
     }
 
     public function show(Offer $offer)

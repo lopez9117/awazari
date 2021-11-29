@@ -10038,3 +10038,45 @@ h3 {
 .section-price-location {
   display: none;
 }
+
+.content-list-offers {
+  list-style: none;
+  padding: 0;
+}
+.content-list-offers .item-offer .offer-item {
+  border-bottom: 1px solid #cacaca;
+  padding: 15px;
+  cursor: pointer;
+}
+.content-list-offers .item-offer .offer-item:hover {
+  background: #f4f6f9;
+  box-shadow: 0 0 4px 1px #cacaca;
+}
+.content-list-offers .item-offer .offer-item .name-offer {
+  color: #777;
+}
+.content-list-offers .item-offer .offer-item.active {
+  background: #f4f6f9;
+  border-bottom: 1px solid #76a00d;
+}
+.content-list-offers .item-offer .offer-item.active .name-offer {
+  color: #76a00d;
+}
+.content-list-offers .open-offer-item {
+  display: none;
+}
+.content-list-offers .open-offer-item .content-image-offer {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  border: 1px solid #76a00d;
+  border-top: none;
+}
+.content-list-offers .open-offer-item .content-image-offer .image-offer {
+  width: 150px;
+  flex: none;
+}
+.content-list-offers .open-offer-item .content-image-offer .content-actions {
+  flex: 1;
+  text-align: center;
+}

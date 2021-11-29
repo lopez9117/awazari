@@ -13,7 +13,36 @@
 @section('content')
     <div class="container contentDashboard">
         <div class="row">
-           
+           <div class="col-12">
+               <div class="card">
+                   <div class="card-body">
+                    <ul class="content-list-offers">
+                        @if ($user->offers)
+                            @foreach ($user->offers as $offer)
+                                <li class="item-offer">
+                                    <div class="offer-item">
+                                        <p class="name-offer mb-0">{{$offer->name}}</p>
+                                    </div>
+                                    <div class="open-offer-item">
+                                        @if ($offer->files)
+                                            @foreach ($offer->files as $file)
+                                                <div class="content-image-offer pt-3 pb-3">
+                                                    <img src="/storage/{{$file->file}}" alt="" class="image-offer">
+                                                    <div class="content-actions">
+                                                        <a href="" class="btn btn-sm btn-dark">Ver</a>
+                                                        <a href="" class="btn btn-sm btn-primary">Editar</a>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                   </div>
+               </div>
+           </div>
         </div>
     </div>
 @stop
@@ -23,5 +52,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+<script src="{{ asset('js/offer.js') }}"></script>
 @stop

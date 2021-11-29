@@ -58,3 +58,5 @@ Route::post('role/destroy', [App\Http\Controllers\RoleController::class, 'destro
 Route::get('/oferta/index', [App\Http\Controllers\OfferController::class, 'index'])->name('index.offer');
 
 Route::get('/oferta/create', [App\Http\Controllers\OfferController::class, 'create'])->name('create.offer');
+
+Route::post('/oferta/store', [App\Http\Controllers\OfferController::class, 'store'])->name('store.offer');
