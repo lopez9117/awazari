@@ -60,3 +60,9 @@ Route::get('/oferta/index', [App\Http\Controllers\OfferController::class, 'index
 Route::get('/oferta/create', [App\Http\Controllers\OfferController::class, 'create'])->name('create.offer');
 
 Route::post('/oferta/store', [App\Http\Controllers\OfferController::class, 'store'])->name('store.offer');
+
+Route::get('/show/offer/{id}', [App\Http\Controllers\OfferController::class, 'show'])->name('show.offer');
+
+Route::get('/edit/offer/{id}', [App\Http\Controllers\OfferController::class, 'edit'])->name('edit.offer');
+
+Route::post('/update/offer', [App\Http\Controllers\OfferController::class, 'update'])->name('update.offer');

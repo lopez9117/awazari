@@ -10002,6 +10002,14 @@ h3 {
     border-color: #dee2e6;
   }
 }
+a {
+  font-family: "poppins-medium";
+}
+
+.nav-header {
+  font-family: "poppins-bold";
+}
+
 .img-circle {
   border-radius: 0px !important;
 }
@@ -10012,6 +10020,7 @@ h3 {
 }
 .nav.nav-treeview > .nav-item > .nav-link.active:hover {
   background-color: rgba(255, 255, 255, 0.1);
+  color: #76a00d;
 }
 
 .nav-item.has-treeview.menu-open > .nav-link.active,
@@ -10035,6 +10044,14 @@ h3 {
   box-shadow: none;
 }
 
+@font-face {
+  font-family: "poppins-medium";
+  src: url(/fonts/Poppins-Medium.ttf?9e1bb626874ed49aa343d66b8d66ceaf);
+}
+@font-face {
+  font-family: "poppins-bold";
+  src: url(/fonts/Poppins-SemiBold.ttf?cce5625b56ec678e42021270b84ef400);
+}
 .section-price-location {
   display: none;
 }
@@ -10050,10 +10067,14 @@ h3 {
 }
 .content-list-offers .item-offer .offer-item:hover {
   background: #f4f6f9;
-  box-shadow: 0 0 4px 1px #cacaca;
+  border-bottom: 1px solid #76a00d;
+}
+.content-list-offers .item-offer .offer-item:hover .name-offer {
+  color: #76a00d;
 }
 .content-list-offers .item-offer .offer-item .name-offer {
   color: #777;
+  font-family: "poppins-medium";
 }
 .content-list-offers .item-offer .offer-item.active {
   background: #f4f6f9;
@@ -10079,4 +10100,27 @@ h3 {
 .content-list-offers .open-offer-item .content-image-offer .content-actions {
   flex: 1;
   text-align: center;
+}
+
+.content-track .title-track {
+  color: #76a00d;
+  font-family: "poppins-medium";
+}
+
+.image-form-edit-offer {
+  width: 150px;
+  filter: brightness(80%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "poppins-bold";
+}
+
+.btn-sm, .btn-group-sm > .btn {
+  font-family: "poppins-medium";
+}
+
+th, td, p {
+  font-family: "Nunito", "sans-serif";
+  font-size: 16px;
 }

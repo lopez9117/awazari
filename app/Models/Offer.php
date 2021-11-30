@@ -17,6 +17,10 @@ class Offer extends Model
         return $this->belongsToMany('App\Models\location')->withTimestamps();
     }
 
+    public function lines(){
+        return $this->belongsToMany('App\Models\line')->withTimestamps();
+    }
+
     public function users(){
         return $this->belongsToMany('App\Models\User')->withTimestamps();
     }

@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Offer;
 use App\Models\File;
 use App\Models\location;
+use App\Models\Category;
+use App\Models\line;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OfferController extends Controller
 {
@@ -20,7 +23,8 @@ class OfferController extends Controller
 
     public function create()
     {
-        return view('admin.oferta.create');
+        $lines = line::all();
+        return view('admin.oferta.create', compact('lines'));
     }
 
     public function store(Request $request)
@@ -50,24 +54,48 @@ class OfferController extends Controller
         $offer->files()->sync($file);
         $offer->locations()->sync($location);
         $offer->users()->sync($request->user_id);
+        $offer->lines()->sync($request->line_id);
 
         $user = User::find(Auth::user()->id);
-        return view('admin.oferta.index', compact('user'));
+        return redirect('/oferta/index');
     }
 
-    public function show(Offer $offer)
+    public function show($id)
     {
-        //
+        $offerDescription = Offer::find($id);
+        return view('admin.oferta.show-offer', compact('offerDescription'));
     }
 
-    public function edit(Offer $offer)
+    public function edit($id)
     {
-        //
+        $offer = Offer::find($id);
+        $lines = line::all();
+        return view('admin.oferta.edit', compact('offer', 'lines'));
     }
 
-    public function update(Request $request, Offer $offer)
+    public function update(Request $request)
     {
-        //
+        $offer = Offer::find($request->id);
+        $location = location::find($request->location_id);
+        $file = File::find($request->file_id);
+        // Data Offer
+        $offer->name = $request->name;
+        $offer->description = $request->description;
+        $offer->price = $request->price;
+        $offer->save();
+
+        $location->department = $request->department;
+        $location->city = $request->city;
+        $location->location = $request->location;
+        $location->save();
+
+        if($request->file('file')){
+            $file->file = $request->file('file')->store('file', 'public');
+            $file->save();
+        }
+
+        $offer->lines()->sync($request->line);
+        return redirect('/oferta/index');
     }
 
     /**

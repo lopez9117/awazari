@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'poppins-medium';
+    src: url('fonts/Poppins-Medium.ttf');
+}
+@font-face {
+    font-family: 'poppins-bold';
+    src: url('fonts/Poppins-SemiBold.ttf');
+}
 .section-price-location{
     display: none;
 }
@@ -11,10 +19,14 @@
             cursor: pointer;
             &:hover{
                 background:#f4f6f9;
-                box-shadow: 0 0 4px 1px #cacaca;
+                border-bottom:1px solid #76a00d;
+                .name-offer{
+                    color:#76a00d;
+                }
             }
             .name-offer{
                 color: #777;
+                font-family: 'poppins-medium';
             }
         }
         .offer-item.active{
@@ -22,7 +34,6 @@
             border-bottom:1px solid #76a00d;
             .name-offer{
                 color:#76a00d;
-                
             }
         }
     }
@@ -44,4 +55,14 @@
             }
         }
     }
+}
+.content-track{
+    .title-track{
+        color:#76a00d;
+        font-family: 'poppins-medium';
+    }
+}
+.image-form-edit-offer{
+    width: 150px;
+    filter: brightness(80%);
 }

@@ -26,6 +26,18 @@ $('#back-form-offer').on('click', function(e){
     e.preventDefault();
 });
 
+$('#next-form-offer-edit').on('click', function(e){
+    $('.section-name-image-description').css({'display':'none'});
+    $('.section-price-location').css({'display':'block'});
+    e.preventDefault();
+});
+
+$('#back-form-offer-edit').on('click', function(e){
+    $('.section-name-image-description').css({'display':'block'});
+    $('.section-price-location').css({'display':'none'});
+    e.preventDefault();
+});
+
 // acordion offer
 var acc = $('.offer-item');
     var i;

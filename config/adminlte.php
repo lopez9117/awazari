@@ -249,17 +249,17 @@ return [
        
         ['header' => 'account_settings'],
         [
-            'text' => 'Gestion Notificaciones',
+            'text' => 'Gestión Notificaciones',
             'url'  => '#',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Gestion Descuentos',
+            'text' => 'Gestión Descuentos',
             'url'  => '#',
             'icon' => 'fas fa-fw fa-lock',
         ],
          [
-            'text' => 'Gestion Productos',
+            'text' => 'Gestión Productos',
             'icon' => 'fas fa-fw fa-lock',
             'submenu' => [
                 [
@@ -274,7 +274,7 @@ return [
         ],
 
         [
-            'text'    => 'Gestion Usuarios',
+            'text'    => 'Gestión Usuarios',
             'icon'    => 'fas fa-users-cog',
             'submenu' => [
                 [
@@ -289,25 +289,6 @@ return [
                 ],
             ],
             'can' => 'admin.usuarios.index',
-        ],
-
-
-
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 

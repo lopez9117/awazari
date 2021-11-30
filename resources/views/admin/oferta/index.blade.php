@@ -29,8 +29,8 @@
                                                 <div class="content-image-offer pt-3 pb-3">
                                                     <img src="/storage/{{$file->file}}" alt="" class="image-offer">
                                                     <div class="content-actions">
-                                                        <a href="" class="btn btn-sm btn-dark">Ver</a>
-                                                        <a href="" class="btn btn-sm btn-primary">Editar</a>
+                                                        <a href="{{route('show.offer',['id' => $offer->id])}}" class="btn btn-sm btn-dark">Ver</a>
+                                                        <a href="{{route('edit.offer',['id' => $offer->id])}}" class="btn btn-sm btn-primary">Editar</a>
                                                     </div>
                                                 </div>
                                             @endforeach
